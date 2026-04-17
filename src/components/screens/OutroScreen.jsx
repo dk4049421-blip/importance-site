@@ -24,7 +24,7 @@ export default function OutroScreen() {
                 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }}
                 className="text-3xl md:text-5xl font-bold text-white mb-4"
             >
-                You are my <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-purple-400">universe</span>
+                You are my <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-purple-400">Favourite Behen ( Bhutkiii )</span>
             </motion.h2>
 
             <motion.p
