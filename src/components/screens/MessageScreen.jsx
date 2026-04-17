@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Mail, MoveRight } from "lucide-react";
+import { Mail, Heart, MoveRight } from "lucide-react"; // Heart add kiya yahan
 
 export default function MessageScreen({ onNext }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-center justify-center z-10 w-full h-full max-w-2xl mx-auto"
+            className="flex flex-col items-center justify-center z-10 w-full h-full max-w-2xl mx-auto p-4"
         >
             <AnimatePresence mode="wait">
                 {!isOpen ? (
@@ -32,14 +32,25 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
                         className="flex flex-col items-center cursor-pointer group"
                         onClick={() => setIsOpen(true)}
                     >
-                        <motion.div
-                            whileHover={{ y: -10}}
-                            transition={{ duration: 0.5 }}
-                            className="relative bg-pink-500/10 p-10 rounded-3xl border border-pink-500/30 backdrop-blur-md shadow-[0_0_10px_rgba(236,72,153,0.2)]"
-                        >
-                            <Mail className="w-24 h-24 text-pink-300 group-hover:text-pink-400 transition-colors" />
-                        </motion.div>
-                        <p className="mt-8 text-pink-200 tracking-wide  text-sm animate-pulse">
+                        <div className="relative">
+                            {/* Envelope ke Upar Wala Glowing Heart (Top Right) */}
+                            <motion.div 
+                                className="absolute -top-4 -right-4 z-20 bg-linear-to-r from-pink-400 to-pink-500 rounded-full p-2.5 drop-shadow-[0_0_12px_rgba(236,72,153,0.9)]"
+                                animate={{ y: [0, -5, 0] }}
+                                transition={{ repeat: Infinity, duration: 2 }}
+                            >
+                                <Heart className="w-6 h-6 text-white" fill="white" />
+                            </motion.div>
+
+                            <motion.div
+                                whileHover={{ y: -10}}
+                                transition={{ duration: 0.5 }}
+                                className="relative bg-pink-500/10 p-10 rounded-3xl border border-pink-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                            >
+                                <Mail className="w-24 h-24 text-pink-300 group-hover:text-pink-400 transition-colors" />
+                            </motion.div>
+                        </div>
+                        <p className="mt-8 text-pink-200 tracking-wide text-sm animate-pulse">
                             Tap to open your letter
                         </p>
                     </motion.div>
@@ -49,15 +60,19 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
                         initial={{ opacity: 0, scale: 0.8, y: 40 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ type: "spring", damping: 25, stiffness: 120, delay: 0.1 }}
-                        className="relative w-full max-h-152 bg-white/5 backdrop-blur-2xl border border-pink-500/20 rounded-4xl p-8 md:p-10 shadow-[0_0_30px_rgba(236,72,153,0.15)] flex flex-col"
+                        className="relative w-full max-h-[80vh] bg-white/5 backdrop-blur-2xl border border-pink-500/20 rounded-4xl p-8 md:p-10 shadow-[0_0_30px_rgba(236,72,153,0.15)] flex flex-col"
                     >
+                        {/* Letter ke Upar Wala Glowing Heart (Top Center) */}
+                        <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 z-20 bg-linear-to-r from-pink-500 to-pink-600 rounded-full p-3.5 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
+                            <Heart className="w-6 h-6 text-white" fill="white" />
+                        </div>
 
-                        <div className="mt-4 mb-6">
+                        <div className="mt-4 mb-6 pt-2">
                             <motion.h3
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.5, duration: 0.8 }}
-                                className="text-2xl font-semibold text-pink-300/90"
+                                className="text-2xl font-semibold text-pink-300/90 font-serif"
                             >
                                 {greeting}
                             </motion.h3>
@@ -67,7 +82,7 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.2, duration: 1.5 }}
-                            className="text-slate-200 md:text-lg leading-loose font-light whitespace-pre-wrap max-h-[50vh] overflow-y-auto"
+                            className="text-slate-200 md:text-lg leading-loose font-light whitespace-pre-wrap overflow-y-auto pr-2"
                         >
                             {mainMessage}
                         </motion.div>
@@ -76,7 +91,7 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 2.5, duration: 0.8 }}
-                            className="mt-8 text-right text-pink-400 font-medium italic"
+                            className="mt-8 text-right text-pink-400 font-medium italic font-serif"
                         >
                             {signOff}
                         </motion.div>
@@ -99,5 +114,4 @@ I know life gets crazy, but I see you. I see how hard you try and how beautiful 
             </AnimatePresence>
         </motion.div>
     );
-};
-
+}
