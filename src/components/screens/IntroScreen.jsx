@@ -16,7 +16,7 @@ export default function IntroScreen({ onNext }) {
                 <Heart className="w-20 h-20 text-pink-500" fill="currentColor" />
             </motion.div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wide">
-                Hey <span className="text-pink-400">Cutiepie...</span>
+                Hey <span className="text-pink-400">Betuuu...</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-12 max-w-md">
                 I made something for you because I want to tell you something important.
