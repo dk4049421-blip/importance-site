@@ -19,7 +19,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-linear-to-b from-purple-500/20 via-black to-fuchsia-600/20">
-
+{currentScreen > 0 && <audio autoPlay loop src="/song.mp3" />}
+      
       <main className="relative w-full min-h-screen flex items-center justify-center p-6 py-10">
         <AnimatePresence mode="wait">
           {screens[currentScreen]}
