@@ -12,13 +12,14 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState(0);
 
   // Screens ka sequence (Order) set kiya
-  const screens = [
+    const screens = [
     <IntroScreen key="screen-0" onNext={() => setCurrentScreen(1)} />, 
-    <MeterScreen key="screen-1" onNext={() => setCurrentScreen(2)} />, // Intro ke baad Meter aayega
-    <StarScreen key="screen-2" onNext={() => setCurrentScreen(3)} />, 
+    <StarScreen key="screen-1" onNext={() => setCurrentScreen(2)} />, // Stars pehle
+    <MeterScreen key="screen-2" onNext={() => setCurrentScreen(3)} />, // Meter uske baad
     <MessageScreen key="screen-3" onNext={() => setCurrentScreen(4)} />, 
     <OutroScreen key="screen-4" />
   ];
+  
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-linear-to-b from-purple-500/20 via-black to-fuchsia-600/20">
